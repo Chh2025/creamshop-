@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sweet Delights Cake Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libertinus+Math&display=swap" rel="stylesheet">
+    <style>
+        /* Universal Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif; /* Default font */
+        }
+
+        body {
+            background-color: #83a8d2; /* Light cream background */
+            color: #333; /* Dark gray text */
+            line-height: 1.6; /* Improved line spacing for readability */
+        }
+
+        /* Header Section */
+        header {
+            background: url('cb.jpg') no-repeat center center/cover; /* Using your specified image */
+            height: 50vh; /* Your specified height */
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Center content horizontally within header */
+            padding: 20px; /* Add padding to header content */
+        }
+
+        header h1 {
+            color: hsl(300, 35%, 94%); /* Your specified color */
+            font-family: 'Caveat', cursive; /* Use a more decorative font for the title */
+            font-size: 4em; /* Larger title */
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+            max-width: 90%; /* Ensure title doesn't overflow on small screens */
+        }
+
+        header p {
+            font-size: 1.5em; /* Larger tagline */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            max-width: 80%; /* Ensure tagline doesn't overflow */
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #991019; /* Your specified background color */
+            padding: 1em;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky; /* Sticky navigation */
+            top: 0;
+            z-index: 1000; /* Ensure nav stays on top */
+            display: flex; /* Use flexbox for nav items */
+            justify-content: center; /* Center nav items */
+            flex-wrap: wrap; /* Allow nav items to wrap */
+        }
+
+        nav a {
+            color: white;
+            margin: 0 20px; /* Increased margin for better spacing */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 5px 0; /* Add vertical padding for clickable area */
+            white-space: nowrap; /* Prevent nav links from breaking */
+        }
+
+        nav a:hover {
+            color: #ffe0e3; /* Lighter pink on hover */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative; /* Container for dropdown */
+            display: inline-block; /* Allows it to sit next to other nav links */
+            margin: 0 20px; /* Match nav link margin */
+            white-space: nowrap; /* Prevent dropdown button from breaking */
+        }
+
+        .dropbtn {
+            background-color: transparent; /* No background for the button itself */
+            color: white;
+            padding: 5px 0; /* Match nav link padding */
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-decoration: none; /* Ensure it looks like other nav links */
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: block; /* Make the whole area clickable */
+        }
+
+        .dropbtn:hover {
+            color: #ffe0e3;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-content {
+            display: none; /* HIDDEN BY DEFAULT */
+            position: absolute;
+            background-color: #f9f9f9; /* Background for dropdown menu */
+            min-width: 160px; /* Minimum width of the dropdown */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1; /* Ensure it appears above other content */
+            border-radius: 5px;
+            overflow: hidden; /* For rounded corners on children */
+            left: 50%; /* Center dropdown horizontally relative to button */
+            transform: translateX(-50%); /* Adjust for centering */
+            top: 100%; /* Position below the button */
+            padding: 5px 0; /* Padding inside dropdown */
+        }
+
+        .dropdown-content a {
+            color: #333; /* Dark text for dropdown links */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block; /* Each link takes full width */
+            text-align: left;
+            font-size: 1em;
+            font-weight: normal; /* Override bold from nav a */
+            transition: background-color 0.2s ease, color 0.2s ease;
+            margin: 0; /* Remove margin from nav a */
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ffb6b9; /* Lighter pink on hover */
+            color: white;
+            transform: none; /* Remove transform from nav a */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block; /* SHOW ON HOVER */
+        }
+
+        /* Section Styling - Main Content Areas */
+        section {
+            padding: 0px 0px; /* Increased vertical padding for sections */
+            max-width: 1000px; /* Max width for the entire section content */
+            margin: auto; /* Center the section */
+            background-color: #ffffff; /* White background for sections */
+            border-bottom: 1px solid #eee; /* Separator line */
+        }
+
+        /* Inner content wrapper for readability */
+        .section-content {
+            max-width: 750px; /* Optimal width for reading text */
+            margin: auto; /* Center the content within the section */
+            padding: 0 15px; /* Add some horizontal padding inside the content wrapper */
+        }
+        
+        .about, .services, .cakes, .contact {
+            background-color: #496031; /* Your specified background color */
+        }
+
+        h2 {
+            font-family: 'Caveat', cursive; /* Use decorative font for section titles */
+            color: #d94f4f; /* Reddish pink */
+            font-size: 2.5em; /* Larger section titles */
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* About Section Specifics */
+        .about p {
+            color: white; /* Your specified color */
+            text-align: justify; /* Justify text for a clean block look */
+            font-size: 1.1em;
+        }
+
+        /* Services Section Specifics */
+        .services ul {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;
+            text-align: center;
+            display: flex; /* Use flexbox for list items */
+            flex-wrap: wrap; /* Allow items to wrap */
+            justify-content: center; /* Center items */
+            gap: 20px; /* Space between list items */
+        }
+        .services li {
+            background-color: #fff0f5; /* Light pink background for list items */
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1 1 calc(50% - 20px); /* Two items per row on larger screens */
+            max-width: 400px; /* Max width for each service item */
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #d94f4f;
+        }
+        @media (max-width: 768px) {
+            .services li {
+                flex: 1 1 100%; /* Stack items on small screens */
+            }
+        }
+
+
+        /* Cakes Gallery */
+        .cakes-gallery {
+            display: grid; /* Use CSS Grid for better control */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 25px; /* Space between grid items */
+            justify-content: center; /* Center items if they don't fill the row */
+            padding: 0 15px; /* Padding for the gallery itself */
+        }
+
+        .cakes-gallery img {
+            width: 100%; /* Image fills its grid cell */
+            height: 250px; /* Fixed height for consistent look */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cakes-gallery img:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Contact Section Specifics */
+        .contact p {
+            background-color: white;
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ffb6b9; /* Lighter pink */
+            padding: 25px;
+            text-align: center;
+            color: #884a4d; /* Darker text for contrast */
+            font-size: 0.9em;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3em;
+            }
+            header p {
+                font-size: 1.2em;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 1em;
+            }
+            section {
+                padding: 40px 15px; /* Adjust section padding on smaller screens */
+            }
+            h2 {
+                font-size: 2em;
+            }
+            .cakes-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller images on small screens */
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            nav a {
+                display: block; /* Stack navigation links vertically */
+                margin: 8px 0;
+            }
+            .cakes-gallery {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+            }
+            .dropdown {
+                width: 100%; /* Make dropdown button take full width */
+                margin: 8px 0; /* Match other stacked nav links */
+            }
+            .dropdown-content {
+                /* Removed 'position: static;' and related overrides here */
+                /* This ensures it remains hidden by default and only appears on hover */
+                transform: none; /* Keep this */
+                min-width: unset; /* Keep this */
+                width: 100%; /* Take full width when stacked */
+                box-shadow: none; /* Remove shadow for stacked look */
+                border-radius: 0;
+                background-color: #ff8c94; /* Match nav background */
+            }
+            .dropdown-content a {
+                padding-left: 30px; /* Indent dropdown links */
+                color: rgb(45, 141, 91); /* White text for stacked dropdown links */
+            }
+            .dropdown-content a:hover {
+                background-color: #6e2121; /* Darker pink on hover */
+            }
+            footer {
+                padding: 20px 15px; /* Adjust footer padding */
+            }
+             #scrollToTopBtn {
+                width: 45px;
+                height: 45px;
+                padding: 10px;
+                font-size: 1em;
+                bottom: 20px;
+                right: 20px;
+            }
+             #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 30px; /* 30px from the bottom */
+            right: 30px; /* 30px from the right */
+            z-index: 99; /* Ensure it's above other content */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #d94f4f; /* Reddish pink background */
+            color: white; /* White text/icon */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50%; /* Circular button */
+            font-size: 1.2em; /* Icon/text size */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Subtle shadow */
+            transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #991019; /* Darker pink on hover */
+            transform: translateY(-3px); /* Lift effect */
+        }
+
+        /* Image Lightbox/Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Sit on top (higher than nav and scroll button) */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            transition: opacity 0.3s ease; /* Smooth fade in/out */
+            opacity: 0; /* Start hidden for transition */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            object-fit: contain; /* Ensure image fits within modal without cropping */
+            transform: scale(0.8); /* Start smaller for zoom-in effect */
+            transition: transform 0.3s ease; /* Smooth zoom */
+        }
+
+        .modal.active {
+            display: flex; /* Show flex container */
+            opacity: 1; /* Fade in */
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1); /* Zoom to actual size */
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+            
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Sweet Delights</h1>
+        <p>Freshly Baked Happiness Every Day 🍰</p>
+    </header>
+
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#cakes">Our Cakes</a>
+        <a href="#contact">Contact</a>
+        <!-- New Dropdown for Subscription/Login/Register -->
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Subscription</a>
+            <div class="dropdown-content">
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <div class="section-content">
+            <p>Sweet Delights is a cozy little cake shop in the heart of your city, known for custom-designed cakes, cupcakes, and pastries. We use 100% fresh ingredients, and every bite is baked with love! Our passion for baking drives us to create not just desserts, but edible works of art that bring joy to every celebration. From intricate wedding cakes to delightful birthday treats, we ensure every creation is a masterpiece.</p>
+            <p>Our commitment to quality means sourcing the finest ingredients, from rich Belgian chocolate to fresh seasonal fruits. We believe that a great cake starts with great ingredients. Come visit us and experience the difference!</p>
+        </div>
+    </section>
+    <hr>
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="section-content">
+            <ul>
+                <li>🎂 Birthday & Wedding Cakes - Custom designs for your special day.</li>
+                <li>🧁 Customized Cupcakes - Perfect for parties and corporate events.</li>
+                <li>🍪 Cookies & Pastries - A delightful selection of everyday treats.</li>
+                <li>🚚 Online Ordering & Home Delivery - Get your favorites delivered to your doorstep.</li>
+                <li>🎨 Cake Decorating Classes - Learn the art of baking and decorating from our experts.</li>
+            </ul>
+        </div>
+    </section>
+    <hr>
+    <section class="cakes" id="cakes">
+        <h2>Featured Cakes</h2>
+        <div class="cakes-gallery">
+            <img src="chc.jpg" alt="Chocolate Cake">
+            <img src="strb.jpg" alt="Strawberry Cake">
+            <img src="vanilac.jpg" alt="Vanilla Cake">
+            <img src="rvc.jpg" alt="Red Velvet Cake">
+            <img src="ldc.jpg" alt="Lemon Drizzle Cake">
+            <img src="bcc.jpg" alt="Blueberry Cheesecake">
+        </div>
+    </section>
+    <hr>
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div class="section-content"> <!-- Changed from .section to .section-content for consistency -->
+            <p>📍 Location: 123 Baker Street, Cake Town, CA 90210</p>
+            <p>📞 Phone: +91-********20</p>
+            <p>📧 Email: cakeshop@gmail.com</p>
+            <p>🕒 Timings: 10 AM - 8 PM (Mon-Sun)</p>
+            <p>Follow us on social media for daily updates and special offers!</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sweet Delights | Made with ❤ and Sugar</p>
+        
+    </footer>
+    <!-- Scroll to Top Button -->
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">⬆</button>
+
+    <!-- Image Lightbox Modal HTML -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    <script>
+       // --- 1. Dynamic Current Year in Footer ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- 2. Scroll to Top Button Logic ---
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        // When the user scrolls down 200px from the top of the document, show the button
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        // When the user clicks on the button, scroll to the top of the document
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll animation
+            });
+        }
+
+        // --- 3. Image Lightbox/Modal Logic ---
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const closeBtn = document.getElementsByClassName("close-modal")[0];
+        const galleryImages = document.querySelectorAll('.cakes-gallery img');
+
+        // Function to open the modal
+        function openModal(imageSrc) {
+            modal.classList.add('active'); // Add 'active' class to trigger display and transitions
+            modalImage.src = imageSrc;
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.classList.remove('active'); // Remove 'active' class to hide and trigger transitions
+        }
+
+        // Event listeners for opening modal when clicking gallery images
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                openModal(this.src);
+            });
+        });
+
+        // Event listener for closing modal when clicking the close button
+        closeBtn.addEventListener('click', closeModal);
+
+        // Event listener for closing modal when clicking outside the image
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) { // Only close if the click is directly on the overlay
+                closeModal();
+            }
+        });
+
+        // Event listener for closing modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // --- 4. Console Log to Confirm JS is Running ---
+        console.log("JavaScript is running for Sweet Delights Cake Shop!");
+
+        // --- Optional: Smooth scrolling for internal navigation links ---
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default jump
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+  
+
+    </script>
+
+</body>
+</html>
